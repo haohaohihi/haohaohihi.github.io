@@ -69,19 +69,19 @@
 
 
 
-<meta name="description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
+<meta name="description" content="问题起源先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析普通层序无法保留层结点信息，是因为在每次出队列与如队列">
 <meta name="keywords" content="算法,二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树保留层信息的层序遍历点">
 <meta property="og:url" content="http://ipotato.top/2018/04/30/二叉树保留层信息的层序遍历/index.html">
 <meta property="og:site_name" content="土豆豆爱吃土豆">
-<meta property="og:description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
+<meta property="og:description" content="问题起源先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析普通层序无法保留层结点信息，是因为在每次出队列与如队列">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png">
-<meta property="og:updated_time" content="2018-04-30T13:47:47.915Z">
+<meta property="og:updated_time" content="2018-04-30T13:53:01.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树保留层信息的层序遍历点">
-<meta name="twitter:description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
+<meta name="twitter:description" content="问题起源先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析普通层序无法保留层结点信息，是因为在每次出队列与如队列">
 <meta name="twitter:image" content="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png">
 
 
@@ -355,14 +355,14 @@
       
 
       
-        <h4 id="问题起源："><a href="#问题起源：" class="headerlink" title="问题起源："></a>问题起源：</h4><p>先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是：</p>
+        <h4 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h4><p>先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是：</p>
 <p>用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。</p>
 <p>以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。</p>
 <p><img src="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png" alt="示例二叉树"></p>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>普通层序无法保留层结点信息，是因为在每次出队列与如队列的过程中，并不知道哪个结点是当前层的最后一个结点。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>普通层序无法保留层结点信息，是因为在每次出队列与如队列的过程中，并不知道哪个结点是当前层的最后一个结点。</p>
 <p>所以，需要一个标识结点last来保留当前层的最后结点，另一个标识nLast保留下一层的最后一个结点。每次入队列的时候，都更新nLast，这个步骤能保证当出队列结点为last时，nLast始终指向下一层的最后一个结点，此时再将nLast赋给last，从而实现交替。</p>
 <h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for a binary tree node.</span></div><div class="line"><span class="comment"> * public class TreeNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     TreeNode left;</span></div><div class="line"><span class="comment"> *     TreeNode right;</span></div><div class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; resultList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> resultList;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; curSubList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        TreeNode last = root;</div><div class="line">        TreeNode nLast = <span class="keyword">null</span>, node = <span class="keyword">null</span></div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            node = queue.poll();</div><div class="line">            <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.offer(node.left);</div><div class="line">                nLast = node.left;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.offer(node.right);</div><div class="line">                nLast = node.right;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            curSubList.add(node.val);</div><div class="line">            <span class="keyword">if</span> (node == last) &#123;</div><div class="line">                resultList.add(curSubList);</div><div class="line">                curSubList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">                last = nLast;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> resultList;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="LeetCode上相似的题目有"><a href="#LeetCode上相似的题目有" class="headerlink" title="LeetCode上相似的题目有"></a>LeetCode上相似的题目有</h4><blockquote>
+<h4 id="LeetCode上相似的题目"><a href="#LeetCode上相似的题目" class="headerlink" title="LeetCode上相似的题目"></a>LeetCode上相似的题目</h4><blockquote>
 <ol>
 <li><p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/" target="_blank" rel="external">102. Binary Tree Level Order Traversal</a> (层序遍历)</p>
 </li>
@@ -558,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题起源："><span class="nav-number">1.</span> <span class="nav-text">问题起源：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析："><span class="nav-number">2.</span> <span class="nav-text">分析：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">3.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode上相似的题目有"><span class="nav-number">4.</span> <span class="nav-text">LeetCode上相似的题目有</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题起源"><span class="nav-number">1.</span> <span class="nav-text">问题起源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">3.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode上相似的题目"><span class="nav-number">4.</span> <span class="nav-text">LeetCode上相似的题目</span></a></li></ol></div>
             
 
           </div>

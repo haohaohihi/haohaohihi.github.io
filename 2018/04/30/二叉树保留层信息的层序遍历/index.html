@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="算法,二叉树," />
 
 
 
@@ -69,20 +69,20 @@
 
 
 
-<meta name="description" content="定义： 策略模式定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化。也就是说，把一个系列的算法封装到一系列的策略类里面，作为一个抽象策略类的子类。  使用的场景：  出现有许多相关的类，仅仅是行为有差别的情况，可以使用策略模式来使用多个行为中的一个来配置一个类的方法，实现算法动态切换。 出现同一个算法，有很多不同的实现的情况，可以使用">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
+<meta name="keywords" content="算法,二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="策略模式">
-<meta property="og:url" content="http://ipotato.top/2016/06/28/策略模式/index.html">
+<meta property="og:title" content="二叉树保留层信息的层序遍历点">
+<meta property="og:url" content="http://ipotato.top/2018/04/30/二叉树保留层信息的层序遍历/index.html">
 <meta property="og:site_name" content="土豆豆爱吃土豆">
-<meta property="og:description" content="定义： 策略模式定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化。也就是说，把一个系列的算法封装到一系列的策略类里面，作为一个抽象策略类的子类。  使用的场景：  出现有许多相关的类，仅仅是行为有差别的情况，可以使用策略模式来使用多个行为中的一个来配置一个类的方法，实现算法动态切换。 出现同一个算法，有很多不同的实现的情况，可以使用">
+<meta property="og:description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xwm12.com1.z0.glb.clouddn.com/strategy_pattern.jpg">
-<meta property="og:updated_time" content="2017-09-24T08:48:05.433Z">
+<meta property="og:image" content="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png">
+<meta property="og:updated_time" content="2018-04-30T13:47:47.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="策略模式">
-<meta name="twitter:description" content="定义： 策略模式定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化。也就是说，把一个系列的算法封装到一系列的策略类里面，作为一个抽象策略类的子类。  使用的场景：  出现有许多相关的类，仅仅是行为有差别的情况，可以使用策略模式来使用多个行为中的一个来配置一个类的方法，实现算法动态切换。 出现同一个算法，有很多不同的实现的情况，可以使用">
-<meta name="twitter:image" content="http://7xwm12.com1.z0.glb.clouddn.com/strategy_pattern.jpg">
+<meta name="twitter:title" content="二叉树保留层信息的层序遍历点">
+<meta name="twitter:description" content="问题起源：先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是： 用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。 以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。  分析：普通层序无法保留层结点信息，是因为在每次出队列与如">
+<meta name="twitter:image" content="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png">
 
 
 
@@ -112,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://ipotato.top/2016/06/28/策略模式/"/>
+  <link rel="canonical" href="http://ipotato.top/2018/04/30/二叉树保留层信息的层序遍历/"/>
 
 
 
 
 
-  <title>策略模式 | 土豆豆爱吃土豆</title>
+  <title>二叉树保留层信息的层序遍历点 | 土豆豆爱吃土豆</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ipotato.top/2016/06/28/策略模式/">
+    <link itemprop="mainEntityOfPage" href="http://ipotato.top/2018/04/30/二叉树保留层信息的层序遍历/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="土豆豆">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">策略模式</h1>
+          <h1 class="post-title" itemprop="name headline">二叉树保留层信息的层序遍历点</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T16:43:54+08:00">
-                2016-06-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-30T21:37:09+08:00">
+                2018-04-30
               </time>
             
 
@@ -307,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
                   </a>
                 </span>
 
@@ -325,9 +325,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/06/28/策略模式/#comments" itemprop="discussionUrl">
+                <a href="/2018/04/30/二叉树保留层信息的层序遍历/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/06/28/策略模式/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/04/30/二叉树保留层信息的层序遍历/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -355,53 +355,25 @@
       
 
       
-        <ol>
-<li><p>定义：<br> 策略模式定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化。也就是说，把一个系列的算法封装到一系列的策略类里面，作为一个抽象策略类的子类。</p>
+        <h4 id="问题起源："><a href="#问题起源：" class="headerlink" title="问题起源："></a>问题起源：</h4><p>先说二叉树的层序遍历，这是一个很常见也很基础的问题，一般的非递归实现方法是：</p>
+<p>用一个队列保留树的结点信息，先放入根结点，然后一直出队列，并且将出队列的结点的左右子树依次放入队列，直到队列为空。</p>
+<p>以下面的二叉树为例，常规的层序遍历结果为[1, 2, 3, 4]，若想保留树的层次信息，结果应为[[1], [2, 3], [4]] 。</p>
+<p><img src="http://7xwm12.com1.z0.glb.clouddn.com/TIM%E6%88%AA%E5%9B%BE20180430200003.png" alt="示例二叉树"></p>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>普通层序无法保留层结点信息，是因为在每次出队列与如队列的过程中，并不知道哪个结点是当前层的最后一个结点。</p>
+<p>所以，需要一个标识结点last来保留当前层的最后结点，另一个标识nLast保留下一层的最后一个结点。每次入队列的时候，都更新nLast，这个步骤能保证当出队列结点为last时，nLast始终指向下一层的最后一个结点，此时再将nLast赋给last，从而实现交替。</p>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Definition for a binary tree node.</span></div><div class="line"><span class="comment"> * public class TreeNode &#123;</span></div><div class="line"><span class="comment"> *     int val;</span></div><div class="line"><span class="comment"> *     TreeNode left;</span></div><div class="line"><span class="comment"> *     TreeNode right;</span></div><div class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></div><div class="line"><span class="comment"> * &#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</div><div class="line">        List&lt;List&lt;Integer&gt;&gt; resultList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> resultList;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; curSubList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        TreeNode last = root;</div><div class="line">        TreeNode nLast = <span class="keyword">null</span>, node = <span class="keyword">null</span></div><div class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        queue.offer(root);</div><div class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</div><div class="line">            node = queue.poll();</div><div class="line">            <span class="keyword">if</span> (node.left != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.offer(node.left);</div><div class="line">                nLast = node.left;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (node.right != <span class="keyword">null</span>) &#123;</div><div class="line">                queue.offer(node.right);</div><div class="line">                nLast = node.right;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            curSubList.add(node.val);</div><div class="line">            <span class="keyword">if</span> (node == last) &#123;</div><div class="line">                resultList.add(curSubList);</div><div class="line">                curSubList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">                last = nLast;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> resultList;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="LeetCode上相似的题目有"><a href="#LeetCode上相似的题目有" class="headerlink" title="LeetCode上相似的题目有"></a>LeetCode上相似的题目有</h4><blockquote>
+<ol>
+<li><p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/" target="_blank" rel="external">102. Binary Tree Level Order Traversal</a> (层序遍历)</p>
 </li>
-<li><p>使用的场景：</p>
-<ul>
-<li>出现有许多相关的类，仅仅是行为有差别的情况，可以使用策略模式来使用多个行为中的一个来配置一个类的方法，实现算法动态切换。</li>
-<li>出现同一个算法，有很多不同的实现的情况，可以使用策略模式来把这些“不同的实现”实现成为一个算法的类层次。</li>
-<li>需要封装算法中，与算法相关的数据的情况，可以使用策略模式来避免暴露这些跟算法相关的数据结构。</li>
-<li>出现抽象一个定义了很多行为的类，并且是通过多个if-else语句来选择这些行为的情况，可以使用策略模式来代替这些条件语句。</li>
-</ul>
+<li><p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/" target="_blank" rel="external">107. Binary Tree Level Order Traversal II</a> (层序遍历，且按照层数倒序排列)</p>
 </li>
-<li><p>结构图<br><img src="http://7xwm12.com1.z0.glb.clouddn.com/strategy_pattern.jpg" alt=""></p>
+<li><p><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="external">103. Binary Tree Zigzag Level Order Traversal</a> (Z字型层序遍历)</p>
 </li>
-<li><p>参与者及相互的协作</p>
-<ul>
-<li>Strategy：定义所有支持的算法的公共接口，是所有策略类的父类</li>
-<li>ConcreteStrategy：以Strategy接口实现的具体算法</li>
-<li>Context：上下文，其中维护一个对Strategy对象的引用，用一个ConcreteStrategy对象配置，可以定义一个接口让Strategy访问数据</li>
-</ul>
-</li>
-<li><p>一些应用举例：</p>
-<ul>
-<li>在一个购物场景的Context中，可以将支付策略抽象成一个接口，然后对这个接口实现不同的付款方式。</li>
-<li>在一个将图片保存为不同格式的场景中，可以讲保存策略抽象成一个接口，对这个接口实现保存为不同的图片格式。<br>等等。。。</li>
-</ul>
-</li>
-<li><p>策略模式的优缺点：<br> 1）优点：</p>
-<ul>
-<li>用户可以在不修改原有系统的基础上选择算法或行为，也可以灵活地增加新的算法或行为。</li>
-<li>提供了替换继承关系的方法，将算法封装在Strategy类中，改变更加方便，使用更灵活</li>
-<li>避免了使用多重条件转移语句</li>
-<li>策略的选择由客户端决定，客户可以根据实际灵活决定使用的策略</li>
-</ul>
-<p>2）缺点：</p>
-<ul>
-<li>因为客户需要选择策略，所以客户必须知道所有的策略</li>
-<li>增加了应用中的对象数目</li>
-<li>增加了通信开销</li>
-</ul>
-</li>
-<li><p>策略模式体现的设计原则：</p>
-<ul>
-<li>开闭原则：对拓展开放，对修改关闭</li>
-<li>里氏替换原则</li>
-</ul>
+<li><p><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/description/" target="_blank" rel="external">637. Average of Levels in Binary Tree</a> (计算二叉树每层结点值的平均值)</p>
 </li>
 </ol>
+</blockquote>
 
       
     </div>
@@ -419,7 +391,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
           
         </div>
       
@@ -432,15 +406,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/08/Java类的加载顺序/" rel="next" title="Java类的加载顺序">
+                <i class="fa fa-chevron-left"></i> Java类的加载顺序
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/24/打印二叉树的边界节点/" rel="prev" title="打印二叉树的边界节点">
-                打印二叉树的边界节点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -499,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -565,6 +548,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题起源："><span class="nav-number">1.</span> <span class="nav-text">问题起源：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析："><span class="nav-number">2.</span> <span class="nav-text">分析：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">3.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode上相似的题目有"><span class="nav-number">4.</span> <span class="nav-text">LeetCode上相似的题目有</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -712,9 +711,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://ipotato.top/2016/06/28/策略模式/';
-          this.page.identifier = '2016/06/28/策略模式/';
-          this.page.title = '策略模式';
+          this.page.url = 'http://ipotato.top/2018/04/30/二叉树保留层信息的层序遍历/';
+          this.page.identifier = '2018/04/30/二叉树保留层信息的层序遍历/';
+          this.page.title = '二叉树保留层信息的层序遍历点';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ipotatoTop.disqus.com/embed.js';
